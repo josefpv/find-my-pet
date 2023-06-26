@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: event-bus
+  template:
+    metadata:
+      labels:
+        component: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: josefvivas/find-my-pet-event-bus
+          ports:
+            - containerPort: 4002

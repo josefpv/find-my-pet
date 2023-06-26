@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uploader-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: uploader
+  template:
+    metadata:
+      labels:
+        component: uploader
+    spec:
+      containers:
+        - name: uploader
+          image: josefvivas/find-my-pet-uploader
+          ports:
+            - containerPort: 4004

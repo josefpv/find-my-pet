@@ -1,0 +1,109 @@
+{
+  "endpoints": {
+    "sesion": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/auth/login"
+    },
+    "validaQR": {
+      "dominio": "/api-qr",
+      "puerto": "",
+      "url": "/qrs/valida"
+    },
+    "obtieneEspecies": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas/especies/todas"
+    },
+    "obtieneRazas": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas/razas/"
+    },
+    "registraMascota": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas"
+    },
+    "buscaMascotasPropietario": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas/usuario/"
+    },
+    "buscaMascotasId": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascota/"
+    },
+    "uploadFotoMascota": {
+      "dominio": "/api-uploader",
+      "puerto": "",
+      "url": "/upload/gbucket/mascota"
+    },
+    "actualizaMascota": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas/edita"
+    },
+    "eliminaMascota": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascotas/"
+    },
+    "buscaMascotaBySerial": {
+      "dominio": "/api-mascotas",
+      "puerto": "",
+      "url": "/mascota/perfil/"
+    },
+    "obtieneRegiones": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/user/regiones/"
+    },
+    "obtieneComunas": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/user/regiones/"
+    },
+    "verificaEmail": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/user/verifica/email"
+    },
+    "registraUsuario": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/user/"
+    },
+    "actualizaUsuario": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/user/actualiza"
+    },
+    "obtieneQrs": {
+      "dominio": "/api-qr",
+      "puerto": "",
+      "url": "/qrs/"
+    },
+    "nuevoQR": {
+      "dominio": "/api-qr",
+      "puerto": "",
+      "url": "/qrs/nuevo/"
+    },
+    "toggleQREstado": {
+      "dominio": "/api-qr",
+      "puerto": "",
+      "url": "/qr/cambia/estado"
+    },
+    "obtieneClientes": {
+      "dominio": "/api-auth",
+      "puerto": "",
+      "url": "/clientes"
+    },
+    "previewQR": {
+      "dominio": "http://localhost",
+      "puerto": "",
+      "url": "/qr/preview/"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: qr
+  template:
+    metadata:
+      labels:
+        component: qr
+    spec:
+      containers:
+        - name: qr
+          image: josefvivas/find-my-pet-qr
+          ports:
+            - containerPort: 4003

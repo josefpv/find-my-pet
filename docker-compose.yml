@@ -1,0 +1,67 @@
+version: "3"
+services:
+  nginx:
+    depends_on:
+      - web
+      - mascotas
+      - auth
+      - event-bus
+      - qr
+      - uploader
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3000:80"
+  web:
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./web
+    volumes:
+      - /home/node/app/node_modules
+      - ./web:/home/node/app
+    environment:
+      - WDS_SOCKET_PORT=0
+  mascotas:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./mascotas
+    volumes:
+      - /home/node/app/node_modules
+      - ./mascotas:/home/node/app
+    env_file:
+      - ./mascotas/.env
+  auth:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./auth
+    volumes:
+      - /home/node/app/node_modules
+      - ./auth:/home/node/app
+    env_file:
+      - ./auth/.env
+  event-bus:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./event-bus
+    volumes:
+      - /home/node/app/node_modules
+      - ./event-bus:/home/node/app
+  qr:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./qr
+    volumes:
+      - /home/node/app/node_modules
+      - ./qr:/home/node/app
+    env_file:
+      - ./qr/.env
+  uploader:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./uploader
+    volumes:
+      - /home/node/app/node_modules
+      - ./uploader:/home/node/app
