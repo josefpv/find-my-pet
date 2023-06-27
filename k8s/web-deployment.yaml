@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: web
-          image: josefvivas/find-my-pet-web
+          image: josefvivas/fmp-web
           ports:
             - containerPort: 3000

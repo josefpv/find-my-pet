@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: qr
-          image: josefvivas/find-my-pet-qr
+          image: josefvivas/fmp-qr
           ports:
             - containerPort: 4003

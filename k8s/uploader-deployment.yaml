@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: uploader
-          image: josefvivas/find-my-pet-uploader
+          image: josefvivas/fmp-uploader
           ports:
             - containerPort: 4004

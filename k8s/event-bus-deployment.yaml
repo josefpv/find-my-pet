@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: josefvivas/find-my-pet-event-bus
+          image: josefvivas/fmp-event-bus
           ports:
             - containerPort: 4002
