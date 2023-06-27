@@ -1,3 +1,4 @@
+#!/bin/ash
 FROM --platform=linux/amd64 node:14.14.0-alpine
 USER node
 RUN mkdir -p /home/node/app
