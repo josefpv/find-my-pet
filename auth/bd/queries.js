@@ -14,7 +14,7 @@ module.exports.connection = function () {
   pgClient
     .connect()
     .then(() => console.log("Connected to BD!"))
-    .catch((err) => console.log("Error when connecting to bd"));
+    .catch((err) => console.log("Error when connecting to bd", err));
 };
 
 module.exports.registra_usuario = async function (array_values) {

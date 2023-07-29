@@ -1,19 +1,20 @@
 const { json } = require("express");
 const { Pool } = require("pg");
+const keys = require("../keys");
 let pgClient;
 
 module.exports.connection = function () {
   pgClient = new Pool({
-    host: process.env.PGHOST,
-    port: process.env.PGPORT,
-    user: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
+    host: keys.pgHost,
+    port: keys.pgPort,
+    user: keys.pgUser,
+    password: keys.pgPassword,
   });
 
   pgClient
     .connect()
     .then(() => console.log("Connected to BD!"))
-    .catch((err) => console.log("Error when connecting to bd"));
+    .catch((err) => console.log("Error when connecting to bd", err));
 };
 
 module.exports.lista_mascotas = async function () {

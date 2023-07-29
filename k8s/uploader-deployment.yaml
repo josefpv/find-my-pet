@@ -17,3 +17,29 @@ spec:
           image: josefvivas/fmp-uploader
           ports:
             - containerPort: 4004
+          env:
+            - name: BUCKET_ACCOUNT_TYPE
+              value: "service_account"
+            - name: BUCKET_PROJECT_ID
+              value: "findmypet-387512"
+            - name: BUCKET_KEY_ID
+              value: "35609c9b18947ac61f779a3deb1a87e2c20eebd2"
+            - name: BUCKET_CRED
+              valueFrom:
+                secretKeyRef:
+                  name: fmp-bucket-cred
+                  key: private_key
+            - name: BUCKET_CLIENT_EMAIL
+              value: "find-my-pet-api@findmypet-387512.iam.gserviceaccount.com"
+            - name: BUCKET_CLIENT_ID
+              value: "116540645008928283052"
+            - name: BUCKET_AUTH_URI
+              value: "https://accounts.google.com/o/oauth2/auth"
+            - name: BUCKET_TOKEN_URI
+              value: "https://oauth2.googleapis.com/token"
+            - name: BUCKET_AUTH_PROVIDER
+              value: "https://www.googleapis.com/oauth2/v1/certs"
+            - name: BUCKET_CLIENT_CERT_URL
+              value: "https://www.googleapis.com/robot/v1/metadata/x509/find-my-pet-api%40findmypet-387512.iam.gserviceaccount.com"
+            - name: BUCKET_UNIVERSE_DOMAIN
+              value: "googleapis.com"

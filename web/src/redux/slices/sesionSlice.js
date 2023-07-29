@@ -103,7 +103,7 @@ export const recuperaSesion = () => (dispatch) => {
 
 export const iniciaSesionAsyn = () => (dispatch, getState) => {
   const { email, password } = getState().sesion.loginForm;
-  console.log({ email, password });
+  //console.log({ email, password });
   const { dominio, puerto, url } = config.endpoints.sesion;
   const urlApi = `${dominio}${url}`;
   console.log(urlApi);

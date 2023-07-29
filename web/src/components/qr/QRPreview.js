@@ -20,7 +20,7 @@ const QRPreview = () => {
             <QRCode
               size={100}
               style={{ height: "auto", maxWidth: "80%", width: "80%" }}
-              value={`http://localhost:3000/mascotas/perfil/${serial}`}
+              value={`http://34.27.55.159/mascotas/perfil/${serial}`}
               viewBox={`0 0 100 100`}
             />
           </Grid>

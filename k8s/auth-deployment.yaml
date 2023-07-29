@@ -17,3 +17,80 @@ spec:
           image: josefvivas/fmp-auth
           ports:
             - containerPort: 4001
+          env:
+            - name: TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: TOKEN_SECRET
+            - name: PGHOST
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: PGHOST
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: PGUSER
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: PGPASSWORD
+            - name: PGDATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: PGDATABASE
+            - name: PGPORT
+              valueFrom:
+                secretKeyRef:
+                  name: literal-token
+                  key: PGPORT
+        - name: cloud-sql-proxy
+          # It is recommended to use the latest version of the Cloud SQL Auth Proxy
+          # Make sure to update on a regular schedule!
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.1.0
+          args:
+            # If connecting from a VPC-native GKE cluster, you can use the
+            # following flag to have the proxy connect over private IP
+            # - "--private-ip"
+
+            # Enable structured logging with LogEntry format:
+            - "--structured-logs"
+            # Replace DB_PORT with the port the proxy should listen on
+            - "--port=5432"
+            - "clean-carrier-390803:southamerica-west1:find-my-pet-bd"
+
+            # [START cloud_sql_proxy_k8s_volume_mount]
+            # This flag specifies where the service account key can be found
+            - "--credentials-file=/secrets/service_account.json"
+          securityContext:
+            # The default Cloud SQL Auth Proxy image runs as the
+            # "nonroot" user and group (uid: 65532) by default.
+            runAsNonRoot: true
+          volumeMounts:
+            - name: postgres
+              mountPath: /secrets/
+              readOnly: true
+          # [END cloud_sql_proxy_k8s_volume_mount]
+          # Resource configuration depends on an application's requirements. You
+          # should adjust the following values based on what your application
+          # needs. For details, see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+          resources:
+            requests:
+              # The proxy's memory use scales linearly with the number of active
+              # connections. Fewer open connections will use less memory. Adjust
+              # this value based on your application's requirements.
+              memory: "1Gi"
+              # The proxy's CPU use scales linearly with the amount of IO between
+              # the database and the application. Adjust this value based on your
+              # application's requirements.
+              cpu: "200m"
+      # [START cloud_sql_proxy_k8s_volume_secret]
+      volumes:
+        - name: postgres
+          secret:
+            secretName: fmp-bd-connect
+      # [END cloud_sql_proxy_k8s_volume_secret]

@@ -101,7 +101,7 @@
       "url": "/clientes"
     },
     "previewQR": {
-      "dominio": "http://localhost",
+      "dominio": "http://34.27.55.159",
       "puerto": "",
       "url": "/qr/preview/"
     }
